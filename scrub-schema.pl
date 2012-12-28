@@ -4,6 +4,9 @@
 # Remove drop/create/alter statements for certain tables from a SQL DDL script
 #
 # Usage: cat your-sql-file.sql | scrub-schema.pl table1 table2 table3 ... > scrubbed.sql
+#
+# This code is available under the Apache License, version 2, available at the link below.
+# http://www.apache.org/licenses/LICENSE-2.0.html
 ##############################################################################################
 
 sub skipBlock {
