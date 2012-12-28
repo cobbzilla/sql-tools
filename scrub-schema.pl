@@ -17,12 +17,13 @@ sub skipBlock {
       while ( $skippingCreate ) {
         while (<STDIN>) {
           if (/\);/) {
-            $skippingCreate = 0; break;
+            $skippingCreate = 0; return 1;
           }
         }
       }
     }
   }
+  return 0;
 }
 
 while (<STDIN>) {
@@ -39,11 +40,10 @@ while (<STDIN>) {
     }
 
   } elsif (/\s*create table/) {
-      &skipBlock("create table");
+      next if ( &skipBlock("create table") );
 
   } elsif (/\s*alter table/) {
-      &skipBlock("alter table");
+      next if ( &skipBlock("alter table") );
   }
   print;
-
 }
